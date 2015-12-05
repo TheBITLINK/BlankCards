@@ -87,7 +87,7 @@
 	"game":
 	{
 		"time": "Temps",
-		"wcards": "Tes cartes vides:",
+		"wcards": "Tes cartes blances:",
 		"youareczar": "Tu es le czar.",
 		"czar": "{p} est le czar de ce tour.",
 		"win": "{p} gagne ce tour!",

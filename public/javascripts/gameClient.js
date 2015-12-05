@@ -141,7 +141,7 @@ socket.on('login fail', function(err, rl,nm){
     {
       window.location.reload();
     }
-  },'', nm);
+  },'', false, nm);
 });
 
 /* Chat */
