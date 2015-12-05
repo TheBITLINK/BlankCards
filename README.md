@@ -9,7 +9,7 @@ It's still a Work in progress, so expect bugs and updates!
 
 ## Basic Configuration
 
-You'll need to install [Node](https://nodejs.org/) if you haven't
+You'll need to install [Node](https://nodejs.org/) v5.1+ if you haven't
 
 First, run `npm install` to get all the dependencies.
 
