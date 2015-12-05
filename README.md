@@ -1,5 +1,7 @@
 # BlankCards
-Another Card Agaisnt Humanity clone. Inspired from pretendyoure.xyz
+![Screenshot](/public/screenshot.png?raw=true)
+
+Another Card Against Humanity clone. Inspired from pretendyoure.xyz
 
 Powered by Node.js, Semantic UI and Socket.io
 
