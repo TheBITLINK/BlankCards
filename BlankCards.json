@@ -1,0 +1,13 @@
+{
+	"title": "Blank Cards",
+	"serverName": "Development Server",
+	"serverLocale": "en-us",
+	"motd": "Blank cards test server",
+	"lobbyDesc": "Welcome to Blank Cards!",
+	"chatWelcome": "Welcome to Blank Cards!",
+	"chatBotName": "Blank Cards",
+	"colorsch": "olive",
+	"defdeck": ["Third Version"],
+	"availDeck": ["First Version", "Second Version", "Third Version"],
+	"additionalInfo": ["www.blankcards.xyz"]
+}

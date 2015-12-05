@@ -1,0 +1,126 @@
+doctype html
+html
+  head
+    title #{server.title}
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.css')
+    link(rel='stylesheet', href='/stylesheets/custom.css')
+    script(type='text/javascript', src='https://cdn.socket.io/socket.io-1.2.0.js')
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.4.min.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js')
+    script.
+      var str = !{JSON.stringify(s)};
+      var srv = !{JSON.stringify(server)};
+    script.
+      $(function(e){
+        $('.ui.menu .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+      });
+  body.pushable
+    .ui.top.fixed.inverted.menu
+      a(href="/",class='header active item ' + server.colorsch) #{server.title}
+      .item
+        i.icon.cloud
+        | #{server.serverName}
+      .right.menu
+        a.item#userPrefs(href='#userPrefs')
+    block content
+    // ModalUI
+    .ui.basic.modal#confirm
+      i.icon.close
+      .header header
+      .content
+        .description
+          p description
+      .actions
+        .two.fluid.ui.inverted.buttons
+          .ui.red.basic.inverted.button.deny
+            i.icon.cancel
+            | #{s.shared.cancel}
+          .ui.green.basic.inverted.button.approve
+            i.icon.checkmark
+            | #{s.shared.ok}
+    .ui.basic.modal#prompt
+      i.icon.close
+      .header header
+      .content
+        .description
+          .ui.input.fluid.inverted.transparent#tinput
+            input(type="text", placeholder='Introduce texto...')
+      .actions
+        .two.fluid.ui.inverted.buttons
+          .ui.red.basic.inverted.button.deny
+            i.icon.cancel
+            | #{s.shared.cancel}
+          .ui.green.basic.inverted.button.approve
+            i.icon.checkmark
+            | #{s.shared.ok}
+    .ui.basic.modal#alert
+      i.icon.close
+      .header header
+      .content
+        .description
+          p description
+      .actions
+        .two.fluid.ui.inverted.buttons
+          .ui.green.basic.inverted.button.approve
+            i.icon.checkmark
+            | #{s.shared.ok}
+    .ui.modal#userprefs
+      i.icon.close
+      .header #{s.ui.userprefs.header}
+      .content
+        .ui.warning.message #{s.ui.userprefs.usernamewarn}
+        form.ui.form
+          .field
+            label #{s.shared.username}
+            input#usrnch(type='text')
+          .field
+            label #{s.ui.userprefs.ignoredusers}
+            input#userlck(type='text', placeholder=s.ui.userprefs.ignoredusersph)
+      .actions
+        .ui.button.cancel
+          i.icon.close
+          | #{s.shared.cancel}
+        .ui.green.button.approve
+          i.icon.checkmark
+          | #{s.shared.ok}
+    .ui.modal#newroom
+      i.icon.close
+      .header #{s.ui.newroom.header}
+      .content
+        .ui.grid
+          .four.wide.column
+            .ui.secondary.vertical.fluid.pointing.menu
+              a.green.active.item(data-tab='basic') #{s.ui.newroom.basic}
+              a.teal.item(data-tab='cards') #{s.ui.newroom.cardpacks}
+              //.item #{s.ui.newroom.advanced}
+          .twelve.wide.column
+            form.ui.form.active.tab(data-tab='basic')
+              .two.fields
+                .field
+                  .ui.labeled.input
+                    .ui.label #
+                    input#newroom_name(type='text', placeholder=s.ui.newroom.roomname)
+                .field
+                  select#newroom_priv
+                    option(value='pub') #{s.ui.newroom.public}
+                    option(value='priv') #{s.ui.newroom.private}
+              .field
+                input#newroom_desc(type='text', placeholder=s.ui.newroom.roomdesc)
+              .field
+                input#newroom_pass(type='password', placeholder=s.ui.newroom.roompass)
+            .ui.tab(data-tab='cards')
+              .ui.fluid.search#ssCards
+                .ui.fluid.icon.input
+                  input.prompt(placeholder=s.ui.newroom.searchC,type='text')#sCards
+                  i.search.icon
+                .results
+              .ui.divided.items#seldeck
+      .actions
+        .ui.button.cancel
+          i.icon.close
+          | #{s.shared.cancel}
+        .ui.green.button.approve
+          i.icon.checkmark
+          | #{s.shared.ok}

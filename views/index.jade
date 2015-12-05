@@ -1,0 +1,82 @@
+extends layout
+
+block content
+  script(type='text/javascript', src='/javascripts/gameClient.js')
+  .ui.pusher
+   br
+   br
+   br
+   .ui.grid
+     #mainColumn
+       #lobby
+         h3.ui.left.floated.header
+           i.icon.grid.layout
+           .content
+             |#lobby
+             .sub.header #{server.lobbyDesc}
+         .ui.right.floated.mini.statistic
+           .value#playerCount 0
+           .label #{s.shared.players}
+         .ui.right.floated.mini.statistic
+           .value#roomCount 0
+           .label #{s.shared.rooms}
+         .ui.input.right.action.left.icon(style='float:right;')
+           input#searchRooms(onchange='LobbySearch()')
+           i.icon.search
+           button.ui.green.right.labeled.icon.button#newRoom
+             i.icon.plus
+             | #{s.lobby.newroom}
+           
+         br
+         br
+         br
+         br
+         .ui.cards#roomlist
+       #game(style='display:none;')
+         h3.ui.left.floated.header
+           i.icon.grid.layout
+           .content
+             span#hText
+             .sub.header#hDesc
+         .ui.right.floated.mini.statistic
+           .value#rplayerCount 0
+           .label #{s.shared.players}
+         .ui.right.floated.mini.statistic
+           .value#timerCount 120
+           .label#timerLabel #{s.game.time}
+         br
+         br
+         br
+         #playedCards
+         #bCcont
+         h2 #{s.game.wcards}
+         .ui#wcs
+           #wCcont
+           .ui.dimmer
+             .content
+               h2.ui.inverted.icon.header
+                 i.icon.random
+                 | #{s.game.youareczar}
+         center#wait(style="display:none;")
+           h1#wfp #{s.waiting.waitingforplayers}
+           p#wf2 #{s.waiting.youneed3}
+           p#wf3 #{s.waiting.waitorshare}
+           .ui.action.input#wf4
+             input#waitLink(type='text', style='width:256px')
+             button.ui.teal.right.labeled.icon.button#waitCopy
+               i.copy.icon
+               | #{s.waiting.copylink}
+  .ui.sidebar.right.visible.wide#chat
+    .ui.inverted.segment#plSegment
+      .ui.inverted.relaxed.divided.list#playerList
+    .ui.inverted.segment#chatSegment
+      .ui.inverted.relaxed.divided.list#chatMsg
+        
+    .ui.bottom.attached.inverted.menu(style='margin-top: -40px!important;')
+      .item(style='width:85%;')
+        .ui.transparent.inverted.input
+          input.prompt#chatInput(type='text', placeholder=s.chat.placeholder)
+      .item.icon#chatSend(style='cursor:pointer;width:15%;')
+         i.send.icon
+  .ui.dimmer#loadState
+    .ui.loader

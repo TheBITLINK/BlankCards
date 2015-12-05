@@ -1,0 +1,156 @@
+#chat{
+	margin-top: 40px!important;
+	overflow: hidden;
+}
+
+#chatSegment{
+	height: calc(100% - 40px);
+	border-radius: 0;
+	overflow-y: auto;
+	word-wrap: break-word;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#plSegment
+{
+    display: none;
+    overflow-y: auto;
+	word-wrap: break-word;
+    border-radius: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.bc-czar
+{
+    color: gold;
+}
+
+#playedCards
+{
+    width: calc(100% - 256px);
+    float: right;
+    height: 256px;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.mini-card-group, .mini-card
+{
+    margin: 4px;
+    display: inline-block;
+}
+
+.mini-card
+{
+    width: 96px;
+    height: 96px;
+    padding: 4px;
+    overflow: hidden;
+    word-wrap: break-word;
+    background: #FFFFFF;
+    border-radius: 0.28571429rem;
+    box-shadow: 0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
+    font-size: 80%;
+}
+
+.waiting #wCcont, .waiting #bCcont, .waiting h2, #timerCount, #timerLabel, .waiting #playedCards {
+    display: none;
+}
+
+.waiting #wait
+{
+    display: block!important;
+}
+
+.bc-playerlist #chatSegment
+{
+    height: calc(100% - 180px)!important;
+}
+
+.bc-playerlist #plSegment
+{
+    display: block!important;
+    height: 140px!important;
+    border-bottom: 1px solid #666!important;
+}
+
+#chat .adminmsg
+{
+	background-color: #333;
+    border-left: 10px solid #C3132F;
+    margin-left: -14px;
+    padding-left: 4px;
+    padding-right: 14px;
+    margin-right: -14px;
+}
+
+#chat .modmsg
+{
+	background-color: #333;
+    border-left: 10px solid #BADA55;
+    margin-left: -14px;
+    padding-left: 4px;
+    padding-right: 14px;
+    margin-right: -14px;
+}
+
+#mainColumn{
+    width: calc(100% - 414px);
+    margin-left: 32px;
+    margin-top: 1em;
+}
+
+#chat .mentionmsg
+{
+	background-color: #333;
+    border-left: 10px solid darkcyan;
+    margin-left: -14px;
+    padding-left: 4px;
+    padding-right: 14px;
+    margin-right: -14px;
+}
+
+#chat .roomownmsg
+{
+	background-color: #333;
+    margin-left: -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-right: -14px;
+}
+
+#chat .menu
+{
+	border-radius: 0;
+}
+
+#chatMsg
+{
+    margin-bottom: 40px;
+}
+
+.pusher
+{
+    background: #FFFFFF url(/images/triangular.png)!important;
+}
+
+.bc-blackcard, .bc-whitecard, #game
+{
+    cursor: default !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.bc-presel, .bc-sel
+{
+    border: 3px solid #0094FF!important;
+}
+
+.bc-sel
+{
+    background: #0094FF!important;
+}

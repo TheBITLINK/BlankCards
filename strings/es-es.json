@@ -1,0 +1,99 @@
+{
+	"locale": "en-us",
+	"by": "TheBITLINK",
+	"shared":
+	{
+		"ok": "Aceptar",
+		"cancel": "Cancelar",
+		"username": "Nombre de usuario",
+		"room": "Sala",
+		"rooms": "Salas",
+		"player": "Jugador",
+		"players": "Jugadores",
+		"alert": "Alerta",
+		"confirmation": "Confirmación",
+		"entertext": "Introduce texto..."
+	},
+	"ui": {
+		"userprefs":
+		{
+			"header": "Opciones de usuario",
+			"usernamewarn": "Cambiar tu nombre de usuario hará que el juego se recargue!",
+			"ignoredusers": "Usuarios Ignorados/Bloqueados (separados por coma)",
+			"ignoredusersph": "No verás mensajes de estos usuarios"
+		},
+		"newroom":
+		{
+			"header": "Crear nueva Sala",
+			"basic": "Básico",
+			"cardpacks": "Decks",
+			"advanced": "Avanzado",
+			"roomname": "Nombre (sin espacios)",
+			"roomdesc": "Descripción",
+			"roompass": "Contraseña (déjalo vacío para jugar sin contraseña)",
+			"public": "Pública",
+			"private": "Privada",
+			"searchC": "Buscar decks por defecto o \"CC:{CardCastID}\""
+		}
+	},
+	"server":
+	{
+		"errors":{
+			"forbiddenname": "El nombre de usuario que elegiste está prohibido. Elige otro.",
+			"globalbanned": "Tu dirección IP está baneada.",
+			"inuse": "Nombre de usuario en uso, elige otro"
+		},
+		"login": "Introduce tu nombre de usuario (puedes cambiarlo luego en opciones)",
+		"translationcredits": ["*Traducción al español:*", "thebit.link"]
+	},
+	"chat":
+	{
+		"placeholder": "Chat...",
+		"commandnotfound": "*Comando inválido*. Usa /help para una lista de comandos.",
+		"commandlist": [
+			"Comandos disponibles:\n",
+			"*/help*: Muestra esta ayuda.",
+			"*/roll* ~n~: Da un número al azar entre 0 y n",
+			"*/me* ~act~: Muestra una acción.",
+			"*/info*: Información del servidor"
+		],
+		"roll": "*{p}* tira el dado: {n1}/{n2}",
+		"roll2big": "Número muy grande"
+	},
+	"lobby":{
+		"newroom": "Nueva sala",
+		"cantjoin": "No se puede unir a #{r}"		
+	},
+	"waiting":
+	{
+		"waitingforplayers": "Esperando jugadores...",
+		"youneed3": "Se necesitan al menos 3 personas para jugar Blank Cards correctamente.",
+		"waitorshare": "Puedes esperar o pasarle el link de abajo a 2 amigos",
+		"copylink": "Copiar link",
+		"copyNotSupported": "Tu navegador no soporta el copiado, copia el link manualmente.",
+		"joinnext": "Te unirás en la siguiente ronda",
+		"spectnotsupported": "(El modo espectador aún no está implementado)"
+	},
+	"room":
+	{
+		"leavealert": "Si dejas la sala, esta será eliminada",
+		"notexist": "Parece que esta sala no existe, ¿Quieres Crearla?",
+		"alreadyexist": "Ya existe una sala con este nombre",
+		"password": "Esta sala está protegida por contraseña, introdúcela",
+		"incpassword": "Contraseña incorrecta, inténtalo de nuevo",
+		"full": "La sala está llena, elige otra.",
+		"forbiddenname": "No puedes crear una sala con ese nombre."
+	},
+	"game":
+	{
+		"time": "Tiempo",
+		"wcards": "Tus cartas blancas:",
+		"youareczar": "Eres el czar.",
+		"czar": "{p} es el czar de esta ronda.",
+		"win": "{p} gana esta ronda",
+		"timeout": "Tiempo agotado.",
+		"leave": "{p} abandonó la partida.",
+		"over": "Fin del juego",
+		"winner": "{p} gana esta partida!"
+	}
+}
