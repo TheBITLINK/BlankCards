@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var serverInfo = require('../components/serverInfo.js');
 var strings = require('../components/strings.js');
+var exec = require('child_process').exec;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
