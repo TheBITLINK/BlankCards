@@ -1,6 +1,6 @@
 var fs = require('fs');
 var str = require('./strings.js');
-var srv = require('./serverInfo.js');
+var srv = require('./globals.js').serverSettings;
 var http = require('https');
 module.exports = function(p, players, rooms, roomname)
 {

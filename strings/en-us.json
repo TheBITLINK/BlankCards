@@ -51,7 +51,7 @@
 		"placeholder": "Chat...",
 		"commandnotfound": "*Invalid Command*. Use /help for a list of commands.",
 		"commandlist": [
-			"Avaiable commands:\n",
+			"Available commands:\n",
 			"*/help*: Shows this help.",
 			"*/roll* ~n~: Gives a random number between 0 and n",
 			"*/me* ~act~: Displays an action.",

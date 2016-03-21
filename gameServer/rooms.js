@@ -24,10 +24,12 @@ module.exports = function(p, players, rooms)
 			}
 			// Remove them from previous room
 			var index = rooms[p.room].Players.indexOf(p.name);
+            p.socket.leave(p.room);
 			if (index !== -1) {
 				 rooms[p.room].Players.splice(index, 1);
 			}
 			p.room = d;
+            p.socket.join(p.room);
 			p.socket.emit('chatmeta', 'clear');
 			require('./game.js')(p, players, rooms, d);
 		}
@@ -64,10 +66,12 @@ module.exports = function(p, players, rooms)
 		rooms[nm].Players.push(p.name);		
 		// Remove them from previous room
 		var index = rooms[p.room].Players.indexOf(p.name);
+        p.socket.leave(p.room);
 		if (index !== -1) {
 			 rooms[p.room].Players.splice(index, 1);
 		}
 		p.room = nm;
+        p.socket.join(p.room);
 		p.socket.emit("joinroom", rooms[nm]);
 		p.socket.emit('chatmeta', 'clear');
 	});

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var serverInfo = require('../components/serverInfo.js');
-var strings = require('../components/strings.js');
+var serverInfo = require('../gameServer/globals.js').serverSettings;
+var strings = require('../gameServer/strings.js');
 var exec = require('child_process').exec;
 
 /* GET home page. */

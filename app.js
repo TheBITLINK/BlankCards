@@ -31,8 +31,8 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-var serverInfo = require('./components/serverInfo.js');
-var strings = require('./components/strings.js');
+var serverInfo = require('./gameServer/globals.js').serverSettings;
+var strings = require('./gameServer/strings.js');
 
 // development error handler
 // will print stacktrace

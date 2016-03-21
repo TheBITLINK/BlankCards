@@ -2,11 +2,11 @@ doctype html
 html
   head
     title #{server.title}
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.css')
+    link(rel='stylesheet', href='/stylesheets/semantic.min.css')
     link(rel='stylesheet', href='/stylesheets/custom.css')
-    script(type='text/javascript', src='https://cdn.socket.io/socket.io-1.2.0.js')
-    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.4.min.js')
-    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js')
+    script(type='text/javascript', src='/socket.io/socket.io.js')
+    script(type='text/javascript', src='/javascripts/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/semantic.min.js')
     script.
       var str = !{JSON.stringify(s)};
       var srv = !{JSON.stringify(server)};
