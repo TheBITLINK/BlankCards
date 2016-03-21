@@ -3,13 +3,14 @@
  */
 'use strict';
 const fs = require('fs');
+const deepAssign = require('deep-assign');
 const settings = require('../BlankCards.json');
 
 let strings = require('../strings/en-us.json');
 
 if (fs.existsSync('../strings/' + settings.serverLocale + '.json'))
 {
-    Object.assign(strings, require('../strings/' + serverLocale + '.json'));
+    deepAssign(strings, require('../strings/' + serverLocale + '.json'));
 }
 
 // Generate a string from a template

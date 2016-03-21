@@ -4,6 +4,7 @@
  */
 'use strict';
 
+const md5 = require('md5');
 const serverSecurity = require('./serverSecurity.js');
 const strings = require('./strings.js');
 const Chat    = require('./chat.js');
@@ -15,7 +16,7 @@ module.exports = server =>
     // Temporary: Add a placeholder "room" for the lobby.
     Globals.Rooms = {lobby:{name: 'lobby', priv: true, desc:'Welcome to Blank Cards!',Players:[]}};
     // Hook socket.io to the express server
-    const io = require('socket.io')(server);
+    const io = require('socket.io')(server, {pingTimeout: 15000, pingInterval:5000});
     Globals.io = io;
     
     io.on('error', err =>
@@ -26,7 +27,7 @@ module.exports = server =>
     io.on('connection', socket =>
     {
         // The player enters an username
-        socket.on('login', userName =>
+        socket.on('login', (userName, uid) =>
         {
             // Security check
             userName = userName.trim();
@@ -43,15 +44,38 @@ module.exports = server =>
                 return;
             }
             // The username is already in use.
-            else if (Object.keys(Globals.Players).indexOf(userName) !== -1)
+            else if (Globals.Players[userName])
             {
-                socket.emit('login fail', strings.server.errors.inuse, true, userName);
-                return;
+                if (Globals.Players[userName].uid !== uid)
+                {
+                    socket.emit('login fail', strings.server.errors.inuse, true, userName);
+                    return;
+                }
+                else
+                {
+                    // The user has the same UID. Probably changed name or reloaded the game
+                    // Remove previous user
+                    Globals.Players[userName].socket.removeAllListeners();
+                    removePlayer(userName);
+                    Globals.Players[userName].socket.disconnect();
+                }
+                
             }
             
             // Player Object
             var player = {name: userName, socket: socket, room: 'lobby'};
             socket.join('lobby');
+            
+            if (uid === '.')
+            {
+                // Generate an UID based on the username, the ip, the current timestamp and a random number
+                do 
+                {
+                    uid = md5('bc'+ userName + socket.handshake.address + Date.now() + Math.random());
+                } while (Globals[uid] !== undefined);
+                console.info('Assigned UID ' + uid + ' to ' + userName);
+            }
+            player.uid = uid;
             
             Globals.Players[userName] = player;
             Globals.Rooms.lobby.Players.push(player.name);
@@ -59,23 +83,28 @@ module.exports = server =>
             require('./rooms.js')(player, Globals.Players, Globals.Rooms);
             socket.on('disconnect', function()
             {
-                try
-                {
-                    var index = Globals.Rooms[Globals.Players[userName].room].Players.indexOf(userName);
-                    if (index !== -1)
-                    {
-                        delete Globals.Rooms[Globals.Players[userName].room].Players[index];
-                    }
-                    delete Globals.Players[d];
-                }
-                catch (e)
-                {       
-                }
+                removePlayer(userName);
             });
-            socket.emit('login success', userName);
+            socket.emit('login success', userName, uid);
             socket.emit('roomlist_res', Globals.Rooms);
         });
     });
+    
+    function removePlayer(userName)
+    {
+        try
+        {
+            var index = Globals.Rooms[Globals.Players[userName].room].Players.indexOf(userName);
+            if (index !== -1)
+            {
+                delete Globals.Rooms[Globals.Players[userName].room].Players[index];
+            }
+            delete Globals.Players[userName];
+        }
+        catch (e)
+        {
+        }
+    }
     
     // Watch Rooms for changes
     Object.observe(Globals.Rooms, function()

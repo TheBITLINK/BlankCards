@@ -6,5 +6,5 @@
 module.exports = {
     serverSettings: require('../BlankCards.json'),
     Players: {},
-    Rooms:   {}
+    Rooms:   {},
 };

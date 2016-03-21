@@ -55,10 +55,12 @@
 			"*/help*: Shows this help.",
 			"*/roll* ~n~: Gives a random number between 0 and n",
 			"*/me* ~act~: Displays an action.",
-			"*/info*: Server Information"
+			"*/info*: Server Information",
+            "*/pm* ~user~: Send a private message."
 		],
 		"roll": "*{p}* rolls number {n1}/{n2}",
-		"roll2big": "Number too big"
+		"roll2big": "Number too big",
+        "couldntsendpm": "Couldn't send PM."
 	},
 	"lobby":{
 		"newroom": "New Room",

@@ -117,6 +117,23 @@ class Chat
                 response.push('');
                 response.push(strings.server.translationcredits);
                 this.sendMessage(response.join('\n'));
+            },
+            // Private Messages
+            pm(player)
+            {
+                const args = Array.prototype.slice.call(arguments);
+                args.shift();
+                
+                let message = args.join(' ');
+                try
+                {
+                    Globals.Players[player].socket.emit('chat', this.player.name + '<-[PM]', message);
+                    this.player.socket.emit('chat', player + '->[PM]', message);
+                }
+                catch (ex)
+                {
+                    this.sendMessage(strings.chat.couldntsendpm);
+                }
             }
         };
     }

@@ -1,5 +1,11 @@
 var socket = io();
 
+// Haxx
+window.onbeforeunload = function()
+{
+    socket.disconnect();
+};
+
 /* Modal UI */
 
 var ModalUI = {
@@ -52,13 +58,18 @@ var ModalUI = {
   }
 }
 
+  // Read User Data from localStorage
+  var userData = localStorage.userData ? JSON.parse(localStorage.userData) : {_uid: '.'};
+  
+
 $(function(r){
+
   /* Login */
   
   if(typeof sessionStorage["username"] != 'undefined')
   {
     var n = sessionStorage["username"];
-    socket.emit('login', n);
+    socket.emit('login', n, userData._uid);
   }
   else
   {
@@ -66,7 +77,7 @@ $(function(r){
   {
     if(a)
     {
-      socket.emit('login', n);
+      socket.emit('login', n, userData._uid);
     }
     else
     {
@@ -110,9 +121,11 @@ $(function(r){
 
 var username = '';
 
-socket.on('login success', function(n)
+socket.on('login success', function(n, uid)
 {
   sessionStorage["username"] = n;
+  userData._uid = uid;
+  localStorage.userData = JSON.stringify(userData);
   username = n;
   onLobby = true;
   $('#chatSend').click(chatSend);
